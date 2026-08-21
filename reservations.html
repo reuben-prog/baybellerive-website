@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservations | Restaurant Bay</title>
+    <meta name="description" content="Make a reservation at Restaurant Bay.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ELLNGBX186"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-ELLNGBX186');
+    </script>
+</head>
+<body>
+    <header class="navbar fade-in">
+        <a href="index.html" class="logo">RESTAURANT BAY</a>
+        <nav class="nav-links">
+            <a href="index.html#about">ABOUT</a>
+            <a href="reservations.html">RESERVATIONS</a>
+            <a href="menu.html">MENU</a>
+            <a href="private-events.html">PRIVATE EVENTS</a>
+            <a href="vouchers.html">GIFT CARDS</a>
+        </nav>
+    </header>
+
+    <main style="padding-top: 200px; min-height: 80vh;">
+        <section id="reservations" class="centered-section fade-in-up" style="padding-top: 2rem;">
+            <h2>Reservations</h2>
+            <p>Join us for an unforgettable dining experience.</p>
+            
+            <button id="open-reservation-btn" class="btn" style="margin: 2rem 0; background: transparent; color: var(--text-color); cursor: pointer;">Make a Booking</button>
+            
+            <div class="booking-info" style="max-width: 600px; margin: 0 auto; text-align: center;">
+                <p>Bookings for up to 8 guests can be made online, up to 3 months in advance. For bookings over 8 guests, please contact us directly. Walk-ins are always welcome.</p>
+                <p style="font-size: 0.9rem; margin-top: 2rem; opacity: 0.8;">Please note: A 1.6% surcharge applies for credit card payments. A 10% surcharge applies on Sundays, and a 15% surcharge applies on public holidays.<br><br><a href="cancellation-policy.html" style="text-decoration: underline;">Cancellation Policy</a></p>
+            </div>
+        </section>
+
+        <!-- Reservation Modal -->
+        <div id="reservation-modal" class="modal">
+            <div class="modal-content">
+                <span id="close-reservation-btn" class="close-modal">&times;</span>
+                <div class='obee-widget' account="restaurantbay" hide-header='false' min-height='450' add-height='50' scrolltop='true' widget-type='booking'></div>
+                <script src='https://bookings.obeeapp.com/iframe.js'></script>
+            </div>
+        </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const modal = document.getElementById('reservation-modal');
+                const openBtn = document.getElementById('open-reservation-btn');
+                const closeBtn = document.getElementById('close-reservation-btn');
+
+                openBtn.addEventListener('click', () => {
+                    modal.classList.add('active');
+                });
+
+                closeBtn.addEventListener('click', () => {
+                    modal.classList.remove('active');
+                });
+
+                // Close on outside click
+                window.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        modal.classList.remove('active');
+                    }
+                });
+            });
+        </script>
+    </main>
+
+    <footer id="contact" class="footer fade-in-up">
+        <div class="footer-minimal">
+            <nav class="footer-nav">
+                <a href="gallery.html">Gallery</a>
+                <a href="contact.html">Contact</a>
+                <a href="https://www.instagram.com/bay_bellerive/" target="_blank">Instagram</a>
+                <a href="privacy.html">Privacy Policy</a>
+            </nav>
+            <div style="margin-bottom: 2rem;">
+                <p><strong>Hours</strong></p>
+                <p>Brunch: 7 Days, 8:00am — 2:00pm<br>
+                Dinner: Coming Soon</p>
+            </div>
+            <p><a href="https://www.google.com/maps/search/?api=1&query=31+Cambridge+Road,+Bellerive,+TAS+7018" target="_blank" style="color: inherit; text-decoration: none; border-bottom: 1px dotted currentColor; padding-bottom: 1px; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">31 Cambridge Road, Bellerive, 7018</a><br>
+            ABN 14167808371</p>
+            <p style="margin-top: 4rem; font-size: 0.85rem; opacity: 0.7; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.6;">Restaurant Bay respectfully acknowledges the Mumirimina people as the Traditional Owners of the land on which we gather and operate. We pay our respects to Elders past, present, and emerging.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
