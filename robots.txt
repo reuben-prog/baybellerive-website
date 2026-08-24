@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://restaurantbay.com.au/sitemap.xml
+Sitemap: https://baybellerive.com.au/sitemap.xml
