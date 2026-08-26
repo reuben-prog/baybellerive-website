@@ -269,6 +269,18 @@ p {
     letter-spacing: 0.1em;
 }
 
+/* Service labels in the hours block: an explicit weight, since the global
+   "bolder" resolves against light body text and barely reads as bold. */
+.hours-label {
+    font-weight: 600;
+}
+
+.footer-minimal .hours-label {
+    text-transform: none;
+    font-size: inherit;
+    letter-spacing: normal;
+}
+
 .social-links-footer {
     margin-top: 3rem;
 }
