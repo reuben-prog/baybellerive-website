@@ -35,4 +35,26 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.fade-in-up').forEach(element => {
         observer.observe(element);
     });
+
+    // GA4 key events: phone taps, booking link clicks, private event enquiries
+    document.addEventListener('click', (e) => {
+        const link = e.target.closest('a');
+        if (!link || typeof gtag !== 'function') return;
+        const href = link.getAttribute('href') || '';
+
+        if (href.startsWith('tel:')) {
+            gtag('event', 'phone_call_click', { link_text: link.textContent.trim() });
+        } else if (/reservations\.html/.test(href)) {
+            gtag('event', 'book_table_click', { link_text: link.textContent.trim() });
+        }
+    });
+
+    const eventForm = document.querySelector('.custom-form');
+    if (eventForm) {
+        eventForm.addEventListener('submit', () => {
+            if (typeof gtag === 'function') {
+                gtag('event', 'generate_lead', { form_name: 'private_events' });
+            }
+        });
+    }
 });
