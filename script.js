@@ -35,4 +35,34 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.fade-in-up').forEach(element => {
         observer.observe(element);
     });
+    // GA4 key event tracking
+document.addEventListener('click', function (e) {
+  var a = e.target.closest('a');
+  if (!a || typeof gtag !== 'function') return;
+  var href = a.getAttribute('href') || '';
+
+  if (href.indexOf('tel:') === 0) {
+    gtag('event', 'phone_call_click', {
+      link_text: a.textContent.trim(),
+      value: 40, currency: 'AUD'          // estimated worth, see step 4
+    });
+  } else if (/reservations\.html/.test(href)) {
+    gtag('event', 'book_table_click', {
+      link_text: a.textContent.trim(),
+      value: 30, currency: 'AUD'
+    });
+  }
+});
+
+var eventForm = document.querySelector('.custom-form');
+if (eventForm) {
+  eventForm.addEventListener('submit', function () {
+    if (typeof gtag === 'function') {
+      gtag('event', 'generate_lead', {
+        form_name: 'private_events',
+        value: 500, currency: 'AUD'
+      });
+    }
+  });
+}
 });
